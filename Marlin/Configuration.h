@@ -288,8 +288,8 @@
 
 #endif
 
-#define X_Y_SPEED 120 * 60
-#define Z_SPEED 60 * 60
+#define X_Y_SPEED 40 * 60
+#define Z_SPEED 20 * 60
 
 /**
  * Switching Toolhead
@@ -1227,7 +1227,11 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET -1.5
+#define NOZZLE_TO_PROBE_OFFSET {
+0,     // X-offset
+    0, // Y-offset
+    0
+} // Z-offset
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1678,7 +1682,7 @@
 //
 // #define ABL_BILINEAR_SUBDIVISION
 #if ENABLED(ABL_BILINEAR_SUBDIVISION)
-// Number of subdivisions between probe points
+  // Number of subdivisions between probe points
 #define BILINEAR_SUBDIVISIONS 3
 #endif
 
@@ -1724,7 +1728,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-// #define LCD_BED_LEVELING
+#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
 #define MESH_EDIT_Z_STEP 0.025 // (mm) Step size while manually probing Z axis.
